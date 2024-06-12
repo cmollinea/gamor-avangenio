@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --background: 0 0% 96%;
+        --foreground: 240 1% 20%;
+
+        --primary: 28 100% 56%;
+        --primary-foreground: 55 30% 7%;
+
+        --secondary: 286 73% 49%;
+        --secondary-foreground: 240 2% 89%;
+
+    }
+
+    body {
+        @apply bg-background text-foreground;
+    }
+
+    * {
+        @apply transition-colors ease-in-out
+    }
+
+}
+
+.dark {
+    --background: 240 1% 20%;
+    --foreground: 0 0% 100%;
+
+    --primary: 286 73% 49%;
+    --primary-foreground: 240 2% 89%;
+
+    --secondary: 28 100% 56%;
+    --secondary-foreground: 55 30% 7%;
+
+}
+

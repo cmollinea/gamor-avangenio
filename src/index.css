@@ -4,36 +4,61 @@
 
 @layer base {
     :root {
-        --background: 0 0% 96%;
+        --background: 0 14% 95%;
         --foreground: 240 1% 20%;
+
+        --card-background: 0 4% 95%;
+        --card-foreground: 240 1% 20%;
 
         --primary: 28 100% 56%;
         --primary-foreground: 55 30% 7%;
 
-        --secondary: 286 73% 49%;
+        --button-primary: 227 47% 4%;
+        --button-primary-foreground: 0 0% 91%;
+
+        --button-secondary: 0 12% 97% ;
+        --button-secondary-foreground: 222 47% 11%;
+
+        --secondary: 269 54% 41%;
         --secondary-foreground: 240 2% 89%;
 
     }
 
     body {
-        @apply bg-background text-foreground;
+        @apply bg-background text-foreground transition-colors ease-in-out;
     }
 
-    * {
-        @apply transition-colors ease-in-out
+    h1 {
+        @apply text-5xl 
+    }
+
+    h3 {
+        @apply text-3xl
     }
 
 }
 
 .dark {
-    --background: 240 1% 20%;
+    --background: 240 4% 10%;
     --foreground: 0 0% 100%;
 
-    --primary: 286 73% 49%;
+    --card-background: 240 6% 13%; 
+    --card-foreground: 0 4% 95%;
+
+    --primary: 269 54% 41%;;
     --primary-foreground: 240 2% 89%;
+
+    --button-primary: 60 7% 92%;
+    --button-primary-foreground: 222 47% 11%;
+
+    --button-secondary: 220% 14% 96% ;
+    --button-secondary-foreground: 222 47% 11%;
 
     --secondary: 28 100% 56%;
     --secondary-foreground: 55 30% 7%;
+}
 
+.primary-heading {
+    @apply text-primary
 }
 

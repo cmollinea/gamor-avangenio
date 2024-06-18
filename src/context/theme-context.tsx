@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { themeContext } from ".";
+import { ThemeContext } from ".";
 
 export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
   const firstRender = useRef(true);
@@ -24,8 +24,8 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
   }, [theme, currentTheme, html]);
 
   return (
-    <themeContext.Provider value={{ theme, setTheme }}>
+    <ThemeContext.Provider value={{ theme, setTheme }}>
       {children}
-    </themeContext.Provider>
+    </ThemeContext.Provider>
   );
 };

@@ -20,7 +20,7 @@ export const navigation = {
   auth: [
     {
       label: "Sign in",
-      href: "sign-in",
+      href: "/sign-in",
     },
     {
       label: "Create an Account",

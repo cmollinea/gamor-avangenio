@@ -1,9 +1,9 @@
 import { Link } from "@tanstack/react-router";
 import { navigation } from "../../constants/index.ts";
-import { useTheme } from "../../hooks/useTheme.ts";
+import { useThemeContext } from "../../hooks/use-theme-context.ts";
 
 export const Navbar = () => {
-  const { theme, setTheme } = useTheme();
+  const { theme, setTheme } = useThemeContext();
   return (
     <header className="sticky top-0 z-50 flex place-content-center bg-background/80 py-4 text-lg font-medium backdrop-blur-lg transition-colors ease-in-out">
       <div className="container flex items-center justify-between px-10 lg:px-4">

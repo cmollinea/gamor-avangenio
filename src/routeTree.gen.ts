@@ -13,6 +13,7 @@ import { createFileRoute } from '@tanstack/react-router'
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
+import { Route as SearchImport } from './routes/search'
 
 // Create Virtual Routes
 
@@ -52,6 +53,11 @@ const CreateAnAccountLazyRoute = CreateAnAccountLazyImport.update({
   import('./routes/create-an-account.lazy').then((d) => d.Route),
 )
 
+const SearchRoute = SearchImport.update({
+  path: '/search',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() => import('./routes/search.lazy').then((d) => d.Route))
+
 const IndexLazyRoute = IndexLazyImport.update({
   path: '/',
   getParentRoute: () => rootRoute,
@@ -66,6 +72,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexLazyImport
+      parentRoute: typeof rootRoute
+    }
+    '/search': {
+      id: '/search'
+      path: '/search'
+      fullPath: '/search'
+      preLoaderRoute: typeof SearchImport
       parentRoute: typeof rootRoute
     }
     '/create-an-account': {
@@ -110,6 +123,7 @@ declare module '@tanstack/react-router' {
 
 export const routeTree = rootRoute.addChildren({
   IndexLazyRoute,
+  SearchRoute,
   CreateAnAccountLazyRoute,
   GetPremiumLazyRoute,
   PartyLazyRoute,
@@ -126,6 +140,7 @@ export const routeTree = rootRoute.addChildren({
       "filePath": "__root.tsx",
       "children": [
         "/",
+        "/search",
         "/create-an-account",
         "/get-premium",
         "/party",
@@ -135,6 +150,9 @@ export const routeTree = rootRoute.addChildren({
     },
     "/": {
       "filePath": "index.lazy.tsx"
+    },
+    "/search": {
+      "filePath": "search.tsx"
     },
     "/create-an-account": {
       "filePath": "create-an-account.lazy.tsx"

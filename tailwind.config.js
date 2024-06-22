@@ -25,7 +25,7 @@ export default {
 					DEFAULT: 'hsl(var(--button-secondary))',
 					foreground: 'hsl(var(--button-secondary-foreground))',
 				}
-			},
+			}
     },
   },
   plugins: [],

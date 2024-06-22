@@ -1,30 +1,16 @@
-import { createRootRouteWithContext, Outlet } from "@tanstack/react-router";
-import { TanStackRouterDevtools } from "@tanstack/router-devtools";
-import { Navbar } from "../components/home/navbar";
+import { QueryClient } from "@tanstack/react-query";
+import { Outlet, createRootRouteWithContext } from "@tanstack/react-router";
 import { useAuth } from "../hooks/use-auth-context";
-import { supabase } from "../lib/utils";
 
 interface RouteWithContext {
   authContext: ReturnType<typeof useAuth>;
+  queryClient: QueryClient;
 }
 
 export const Route = createRootRouteWithContext<RouteWithContext>()({
   component: () => (
     <>
-      <Navbar />
-      <section className="space-y-20">
-        <Outlet />
-      </section>
-      <TanStackRouterDevtools />
+      <Outlet />
     </>
   ),
-  loader: async ({ context }) => {
-    const setSession = context.authContext?.setSession;
-    const setUser = context.authContext?.setUser;
-    if (setSession && setUser) {
-      const { data } = await supabase.auth.getSession();
-      setSession(data.session);
-      setUser(data.session?.user ?? null);
-    }
-  },
 });

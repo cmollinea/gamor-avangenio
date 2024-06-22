@@ -7,7 +7,7 @@ export const Hero = () => {
   console.log("Home is rendering");
 
   return (
-    <section className="grid w-full overflow-hidden rounded-xl shadow-xl transition-colors ease-out max-lg:gap-20 max-lg:gap-y-10 lg:grid-cols-2 lg:bg-white xl:h-[45rem] xl:grid-cols-3 dark:bg-card-background">
+    <section className="grid w-full overflow-hidden rounded-xl shadow-xl transition-colors ease-out max-lg:gap-20 max-lg:gap-y-10 lg:grid-cols-2 lg:bg-card-background xl:h-[45rem] xl:grid-cols-3 dark:bg-card-background">
       {/*First Card*/}
       <HomeCta />
       {/*Second Card*/}

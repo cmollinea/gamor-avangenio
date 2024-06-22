@@ -65,7 +65,7 @@ export const ActionCard = () => {
           <CardFooter className="relative z-10">
             <Link
               to={"/search"}
-              className="rounded-xl bg-button-primary py-4 text-xl text-button-primary-foreground"
+              className="rounded-xl bg-button-primary py-4 text-center text-xl text-button-primary-foreground"
             >
               {content.secondStep.buttonLabel}
             </Link>

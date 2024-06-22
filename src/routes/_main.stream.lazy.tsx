@@ -1,6 +1,6 @@
 import { createLazyFileRoute } from "@tanstack/react-router";
 import { ComingSoon } from "../components/ui/coming-soon";
 
-export const Route = createLazyFileRoute("/get-premium")({
+export const Route = createLazyFileRoute("/_main/stream")({
   component: () => <ComingSoon />,
 });

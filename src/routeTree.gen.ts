@@ -13,93 +13,88 @@ import { createFileRoute } from '@tanstack/react-router'
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
-import { Route as SearchImport } from './routes/search'
+import { Route as MainImport } from './routes/_main'
+import { Route as AuthImport } from './routes/_auth'
+import { Route as AuthSearchImport } from './routes/_auth.search'
 
 // Create Virtual Routes
 
-const StreamLazyImport = createFileRoute('/stream')()
 const SignInLazyImport = createFileRoute('/sign-in')()
-const PartyLazyImport = createFileRoute('/party')()
-const GetPremiumLazyImport = createFileRoute('/get-premium')()
-const CreateAnAccountLazyImport = createFileRoute('/create-an-account')()
-const IndexLazyImport = createFileRoute('/')()
+const MainIndexLazyImport = createFileRoute('/_main/')()
+const MainStreamLazyImport = createFileRoute('/_main/stream')()
+const MainPartyLazyImport = createFileRoute('/_main/party')()
+const MainGetPremiumLazyImport = createFileRoute('/_main/get-premium')()
+const MainCreateAnAccountLazyImport = createFileRoute(
+  '/_main/create-an-account',
+)()
 
 // Create/Update Routes
-
-const StreamLazyRoute = StreamLazyImport.update({
-  path: '/stream',
-  getParentRoute: () => rootRoute,
-} as any).lazy(() => import('./routes/stream.lazy').then((d) => d.Route))
 
 const SignInLazyRoute = SignInLazyImport.update({
   path: '/sign-in',
   getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./routes/sign-in.lazy').then((d) => d.Route))
 
-const PartyLazyRoute = PartyLazyImport.update({
+const MainRoute = MainImport.update({
+  id: '/_main',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const AuthRoute = AuthImport.update({
+  id: '/_auth',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const MainIndexLazyRoute = MainIndexLazyImport.update({
+  path: '/',
+  getParentRoute: () => MainRoute,
+} as any).lazy(() => import('./routes/_main.index.lazy').then((d) => d.Route))
+
+const MainStreamLazyRoute = MainStreamLazyImport.update({
+  path: '/stream',
+  getParentRoute: () => MainRoute,
+} as any).lazy(() => import('./routes/_main.stream.lazy').then((d) => d.Route))
+
+const MainPartyLazyRoute = MainPartyLazyImport.update({
   path: '/party',
-  getParentRoute: () => rootRoute,
-} as any).lazy(() => import('./routes/party.lazy').then((d) => d.Route))
+  getParentRoute: () => MainRoute,
+} as any).lazy(() => import('./routes/_main.party.lazy').then((d) => d.Route))
 
-const GetPremiumLazyRoute = GetPremiumLazyImport.update({
+const MainGetPremiumLazyRoute = MainGetPremiumLazyImport.update({
   path: '/get-premium',
-  getParentRoute: () => rootRoute,
-} as any).lazy(() => import('./routes/get-premium.lazy').then((d) => d.Route))
-
-const CreateAnAccountLazyRoute = CreateAnAccountLazyImport.update({
-  path: '/create-an-account',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => MainRoute,
 } as any).lazy(() =>
-  import('./routes/create-an-account.lazy').then((d) => d.Route),
+  import('./routes/_main.get-premium.lazy').then((d) => d.Route),
 )
 
-const SearchRoute = SearchImport.update({
-  path: '/search',
-  getParentRoute: () => rootRoute,
-} as any).lazy(() => import('./routes/search.lazy').then((d) => d.Route))
+const MainCreateAnAccountLazyRoute = MainCreateAnAccountLazyImport.update({
+  path: '/create-an-account',
+  getParentRoute: () => MainRoute,
+} as any).lazy(() =>
+  import('./routes/_main.create-an-account.lazy').then((d) => d.Route),
+)
 
-const IndexLazyRoute = IndexLazyImport.update({
-  path: '/',
-  getParentRoute: () => rootRoute,
-} as any).lazy(() => import('./routes/index.lazy').then((d) => d.Route))
+const AuthSearchRoute = AuthSearchImport.update({
+  path: '/search',
+  getParentRoute: () => AuthRoute,
+} as any).lazy(() => import('./routes/_auth.search.lazy').then((d) => d.Route))
 
 // Populate the FileRoutesByPath interface
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexLazyImport
+    '/_auth': {
+      id: '/_auth'
+      path: ''
+      fullPath: ''
+      preLoaderRoute: typeof AuthImport
       parentRoute: typeof rootRoute
     }
-    '/search': {
-      id: '/search'
-      path: '/search'
-      fullPath: '/search'
-      preLoaderRoute: typeof SearchImport
-      parentRoute: typeof rootRoute
-    }
-    '/create-an-account': {
-      id: '/create-an-account'
-      path: '/create-an-account'
-      fullPath: '/create-an-account'
-      preLoaderRoute: typeof CreateAnAccountLazyImport
-      parentRoute: typeof rootRoute
-    }
-    '/get-premium': {
-      id: '/get-premium'
-      path: '/get-premium'
-      fullPath: '/get-premium'
-      preLoaderRoute: typeof GetPremiumLazyImport
-      parentRoute: typeof rootRoute
-    }
-    '/party': {
-      id: '/party'
-      path: '/party'
-      fullPath: '/party'
-      preLoaderRoute: typeof PartyLazyImport
+    '/_main': {
+      id: '/_main'
+      path: ''
+      fullPath: ''
+      preLoaderRoute: typeof MainImport
       parentRoute: typeof rootRoute
     }
     '/sign-in': {
@@ -109,12 +104,47 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SignInLazyImport
       parentRoute: typeof rootRoute
     }
-    '/stream': {
-      id: '/stream'
+    '/_auth/search': {
+      id: '/_auth/search'
+      path: '/search'
+      fullPath: '/search'
+      preLoaderRoute: typeof AuthSearchImport
+      parentRoute: typeof AuthImport
+    }
+    '/_main/create-an-account': {
+      id: '/_main/create-an-account'
+      path: '/create-an-account'
+      fullPath: '/create-an-account'
+      preLoaderRoute: typeof MainCreateAnAccountLazyImport
+      parentRoute: typeof MainImport
+    }
+    '/_main/get-premium': {
+      id: '/_main/get-premium'
+      path: '/get-premium'
+      fullPath: '/get-premium'
+      preLoaderRoute: typeof MainGetPremiumLazyImport
+      parentRoute: typeof MainImport
+    }
+    '/_main/party': {
+      id: '/_main/party'
+      path: '/party'
+      fullPath: '/party'
+      preLoaderRoute: typeof MainPartyLazyImport
+      parentRoute: typeof MainImport
+    }
+    '/_main/stream': {
+      id: '/_main/stream'
       path: '/stream'
       fullPath: '/stream'
-      preLoaderRoute: typeof StreamLazyImport
-      parentRoute: typeof rootRoute
+      preLoaderRoute: typeof MainStreamLazyImport
+      parentRoute: typeof MainImport
+    }
+    '/_main/': {
+      id: '/_main/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof MainIndexLazyImport
+      parentRoute: typeof MainImport
     }
   }
 }
@@ -122,13 +152,15 @@ declare module '@tanstack/react-router' {
 // Create and export the route tree
 
 export const routeTree = rootRoute.addChildren({
-  IndexLazyRoute,
-  SearchRoute,
-  CreateAnAccountLazyRoute,
-  GetPremiumLazyRoute,
-  PartyLazyRoute,
+  AuthRoute: AuthRoute.addChildren({ AuthSearchRoute }),
+  MainRoute: MainRoute.addChildren({
+    MainCreateAnAccountLazyRoute,
+    MainGetPremiumLazyRoute,
+    MainPartyLazyRoute,
+    MainStreamLazyRoute,
+    MainIndexLazyRoute,
+  }),
   SignInLazyRoute,
-  StreamLazyRoute,
 })
 
 /* prettier-ignore-end */
@@ -139,35 +171,53 @@ export const routeTree = rootRoute.addChildren({
     "__root__": {
       "filePath": "__root.tsx",
       "children": [
-        "/",
-        "/search",
-        "/create-an-account",
-        "/get-premium",
-        "/party",
-        "/sign-in",
-        "/stream"
+        "/_auth",
+        "/_main",
+        "/sign-in"
       ]
     },
-    "/": {
-      "filePath": "index.lazy.tsx"
+    "/_auth": {
+      "filePath": "_auth.tsx",
+      "children": [
+        "/_auth/search"
+      ]
     },
-    "/search": {
-      "filePath": "search.tsx"
-    },
-    "/create-an-account": {
-      "filePath": "create-an-account.lazy.tsx"
-    },
-    "/get-premium": {
-      "filePath": "get-premium.lazy.tsx"
-    },
-    "/party": {
-      "filePath": "party.lazy.tsx"
+    "/_main": {
+      "filePath": "_main.tsx",
+      "children": [
+        "/_main/create-an-account",
+        "/_main/get-premium",
+        "/_main/party",
+        "/_main/stream",
+        "/_main/"
+      ]
     },
     "/sign-in": {
       "filePath": "sign-in.lazy.tsx"
     },
-    "/stream": {
-      "filePath": "stream.lazy.tsx"
+    "/_auth/search": {
+      "filePath": "_auth.search.tsx",
+      "parent": "/_auth"
+    },
+    "/_main/create-an-account": {
+      "filePath": "_main.create-an-account.lazy.tsx",
+      "parent": "/_main"
+    },
+    "/_main/get-premium": {
+      "filePath": "_main.get-premium.lazy.tsx",
+      "parent": "/_main"
+    },
+    "/_main/party": {
+      "filePath": "_main.party.lazy.tsx",
+      "parent": "/_main"
+    },
+    "/_main/stream": {
+      "filePath": "_main.stream.lazy.tsx",
+      "parent": "/_main"
+    },
+    "/_main/": {
+      "filePath": "_main.index.lazy.tsx",
+      "parent": "/_main"
     }
   }
 }

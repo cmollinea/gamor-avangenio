@@ -30,12 +30,14 @@ export const actionCard = {
   },
 } as const;
 
+//todo new photos for racing, moba, mmorpg
+
 export const categoriesContent = [
   { category: "Action", thumbnail: "/categories/action.jpeg" },
   { category: "Sports", thumbnail: "/categories/sports.jpeg" },
-  { category: "Adventure", thumbnail: "/categories/adventure.jpg" },
-  { category: "Arcade", thumbnail: "/categories/arcade.jpeg" },
-  { category: "Fantasy", thumbnail: "/categories/fantasy.jpeg" },
+  { category: "MMORPG", thumbnail: "/categories/adventure.jpg" },
+  { category: "Racing", thumbnail: "/categories/arcade.jpeg" },
+  { category: "Moba", thumbnail: "/categories/fantasy.jpeg" },
   { category: "Strategy", thumbnail: "/categories/strategy.jpeg" },
   { category: "Shooter", thumbnail: "/categories/shooter.jpeg" },
   { category: "All", thumbnail: "/categories/all.jpeg" },

@@ -3,11 +3,13 @@ import { cn } from "../../lib/utils";
 type Props = {
   children: React.ReactNode;
   className?: string;
+  title?: string;
 };
 
-const Card = ({ children, className }: Props) => {
+const Card = ({ children, className, title }: Props) => {
   return (
     <div
+      title={title && title}
       className={cn(
         "flex flex-col overflow-hidden rounded-xl bg-card-background py-4",
         className,

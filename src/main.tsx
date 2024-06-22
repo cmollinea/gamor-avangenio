@@ -3,12 +3,18 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 
 // Import the generated route tree
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { AuthProvider } from "./context/auth-context";
 import { ThemeProvider } from "./context/theme-context";
 import { useAuth } from "./hooks/use-auth-context";
 import { routeTree } from "./routeTree.gen";
 
-const router = createRouter({ routeTree, context: undefined! });
+const queryClient = new QueryClient();
+
+const router = createRouter({
+  routeTree,
+  context: { authContext: undefined!, queryClient },
+});
 
 declare module "@tanstack/react-router" {
   interface Register {
@@ -18,7 +24,11 @@ declare module "@tanstack/react-router" {
 
 function InnerApp() {
   const auth = useAuth();
-  return <RouterProvider router={router} context={{ authContext: auth }} />;
+  return (
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} context={{ authContext: auth }} />{" "}
+    </QueryClientProvider>
+  );
 }
 
 function App() {

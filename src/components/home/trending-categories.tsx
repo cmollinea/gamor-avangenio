@@ -10,10 +10,12 @@ export const TrendingCategories = () => {
       <div className="grid w-full grid-cols-1 place-items-center justify-center gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {categoriesContent.map((item, index) => (
           <Link
+            resetScroll={false}
             key={item.category}
             className="group relative w-full max-w-lg overflow-hidden rounded-xl shadow-md xl:max-w-[365px]"
+            from="/"
             to="/search"
-            search={{ filterByCategory: item.category.toLowerCase() }}
+            search={{ genre: item.category.toLowerCase() }}
           >
             <Card className="">
               <div

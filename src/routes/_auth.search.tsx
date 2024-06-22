@@ -36,7 +36,7 @@ export function Games() {
 
   const gamesQueryOptions = generateQueryOption(title, category);
 
-  const { data, isFetching } = useSuspenseQuery({ ...gamesQueryOptions });
+  const { data } = useSuspenseQuery({ ...gamesQueryOptions });
 
   return (
     <>
@@ -52,7 +52,6 @@ export function Games() {
           </div>
         </>
       )}
-      {isFetching && <p>Loading</p>}
     </>
   );
 }

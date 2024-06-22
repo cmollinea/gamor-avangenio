@@ -45,14 +45,14 @@ function SearchLayout() {
     <>
       <section className="flex w-full max-md:flex-col md:h-screen md:overflow-hidden">
         {isDesktop ? (
-          <aside className="flex w-full max-w-[250px] flex-col items-center space-y-8 bg-card-background px-4 py-6 shadow-md">
+          <aside className="flex w-full max-w-[250px] flex-col items-center space-y-8 bg-card-background px-8 py-6 shadow-md">
             <Link to="/" className="px-10 text-2xl font-bold">
               Gamor
             </Link>
             <SearchFilters />
           </aside>
         ) : (
-          <header className="backdrop-blur-mdsticky sticky top-0 z-50 flex place-content-center bg-background/80 py-4 text-lg font-medium backdrop-blur-lg transition-colors ease-in-out">
+          <header className="sticky top-0 z-50 flex place-content-center bg-background/80 py-4 text-lg font-medium backdrop-blur-md transition-colors ease-in-out">
             <Link to="/" className="px-10 text-2xl font-bold">
               Gamor
             </Link>

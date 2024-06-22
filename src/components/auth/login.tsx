@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
-import { supabase } from "../../lib/utils";
-import { Mail, Password } from "../icons";
+import { useSignIn } from "../../hooks/use-sign-in";
+import { LoginIcon, Mail, Password } from "../icons";
 import {
   Card,
   CardContent,
@@ -9,28 +9,8 @@ import {
   CardTitle,
 } from "../ui/card";
 
-async function handleSubmit(e) {
-  e.preventDefault();
-  const formData = new FormData(e.currentTarget);
-  const [email, password] = [formData.get("email"), formData.get("password")];
-
-  if (email !== null && password !== null) {
-    try {
-      const { error } = await supabase.auth.signInWithPassword({
-        email: email as string,
-        password: password as string,
-      });
-
-      if (error) {
-        throw new Error(error.message);
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  }
-}
-
 export const Login = () => {
+  const { handleSubmit, isPending } = useSignIn();
   return (
     <div className="flex h-screen place-content-center items-center">
       <Card>
@@ -59,6 +39,7 @@ export const Login = () => {
                   placeholder="avangenio@gmail.com"
                   name="email"
                   type="text"
+                  inputMode="email"
                 />
                 <span className="absolute bottom-0 right-4 top-0 flex place-content-center items-center text-foreground/50">
                   <Mail />
@@ -75,7 +56,7 @@ export const Login = () => {
                   className="w-full rounded-xl border border-foreground/20 bg-background p-2 pr-10 transition-colors ease-in-out focus:border-primary focus:outline-none"
                   placeholder="Your password"
                   name="password"
-                  type="text"
+                  type="password"
                 />
                 <span className="absolute bottom-0 right-4 top-0 flex place-content-center items-center text-foreground/50">
                   <Password />
@@ -84,9 +65,15 @@ export const Login = () => {
             </div>
             <button
               type="submit"
-              className="w-full rounded-xl bg-primary p-2 transition-colors ease-in-out hover:bg-primary/80"
+              className="flex w-full place-content-center items-center space-x-0.5 rounded-xl bg-primary p-2 transition-colors ease-in-out hover:bg-primary/80"
             >
-              <Login /> Sign In
+              {isPending ? (
+                "Loading"
+              ) : (
+                <>
+                  <LoginIcon /> Sign In
+                </>
+              )}
             </button>
           </form>
         </CardContent>

@@ -28,6 +28,7 @@ export const Navbar = () => {
           </button>
           <Link
             key={navigation.auth[0].label}
+            from="/"
             to={navigation.auth[0].href}
             className="hover:text-primary/60 max-lg:hidden [&.active]:text-primary"
           >

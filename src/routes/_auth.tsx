@@ -36,6 +36,7 @@ export const Route = createFileRoute("/_auth")({
       setUser(data.session?.user ?? null);
     }
   },
+  errorComponent: (err) => <p>{err.error.message}</p>,
 });
 
 function SearchLayout() {

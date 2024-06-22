@@ -38,9 +38,7 @@ const CardContent = ({ children, className }: Props) => {
 
 const CardFooter = ({ children, className }: Props) => {
   return (
-    <div className={cn("flex flex-col p-2 px-6 font-semibold", className)}>
-      {children}
-    </div>
+    <div className={cn("flex flex-col p-2 px-6", className)}>{children}</div>
   );
 };
 

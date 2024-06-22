@@ -19,6 +19,7 @@ import { Route as AuthSearchImport } from './routes/_auth.search'
 
 // Create Virtual Routes
 
+const SignUpLazyImport = createFileRoute('/sign-up')()
 const SignInLazyImport = createFileRoute('/sign-in')()
 const MainIndexLazyImport = createFileRoute('/_main/')()
 const MainStreamLazyImport = createFileRoute('/_main/stream')()
@@ -29,6 +30,11 @@ const MainCreateAnAccountLazyImport = createFileRoute(
 )()
 
 // Create/Update Routes
+
+const SignUpLazyRoute = SignUpLazyImport.update({
+  path: '/sign-up',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() => import('./routes/sign-up.lazy').then((d) => d.Route))
 
 const SignInLazyRoute = SignInLazyImport.update({
   path: '/sign-in',
@@ -104,6 +110,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SignInLazyImport
       parentRoute: typeof rootRoute
     }
+    '/sign-up': {
+      id: '/sign-up'
+      path: '/sign-up'
+      fullPath: '/sign-up'
+      preLoaderRoute: typeof SignUpLazyImport
+      parentRoute: typeof rootRoute
+    }
     '/_auth/search': {
       id: '/_auth/search'
       path: '/search'
@@ -161,6 +174,7 @@ export const routeTree = rootRoute.addChildren({
     MainIndexLazyRoute,
   }),
   SignInLazyRoute,
+  SignUpLazyRoute,
 })
 
 /* prettier-ignore-end */
@@ -173,7 +187,8 @@ export const routeTree = rootRoute.addChildren({
       "children": [
         "/_auth",
         "/_main",
-        "/sign-in"
+        "/sign-in",
+        "/sign-up"
       ]
     },
     "/_auth": {
@@ -194,6 +209,9 @@ export const routeTree = rootRoute.addChildren({
     },
     "/sign-in": {
       "filePath": "sign-in.lazy.tsx"
+    },
+    "/sign-up": {
+      "filePath": "sign-up.lazy.tsx"
     },
     "/_auth/search": {
       "filePath": "_auth.search.tsx",

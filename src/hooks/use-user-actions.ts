@@ -5,8 +5,6 @@ import { supabase } from "../lib/utils";
 import { useAuth } from "./use-auth-context";
 
 const mutate = () => {
-  console.log("Logging out");
-
   return supabase.auth.signOut();
 };
 

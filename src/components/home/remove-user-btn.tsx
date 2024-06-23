@@ -26,8 +26,6 @@ export const RemoveUserBtn = withRemoveUser(
       }, 150);
     };
 
-    console.log(`${user} btn trigger`);
-
     return (
       <button
         ref={btnRef}

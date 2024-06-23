@@ -13,7 +13,6 @@ const options = {
 
 export async function getGames(title: string = "", category: string = "all") {
   const searchParams = new URLSearchParams();
-  console.log(title);
   let endpoint = url;
 
   if (category !== "all") {

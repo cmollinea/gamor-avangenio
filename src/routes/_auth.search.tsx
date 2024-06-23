@@ -31,6 +31,8 @@ export const Route = createFileRoute("/_auth/search")({
   pendingMs: 0,
 });
 
+//--> Export this component to be used in the lazy segment
+
 export function Games() {
   const { title, category } = Route.useSearch();
 
@@ -55,3 +57,5 @@ export function Games() {
     </>
   );
 }
+
+//<--

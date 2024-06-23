@@ -8,7 +8,7 @@ export const UserAction = () => {
     <div className="relative place-self-end">
       <button
         onClick={handlePanel}
-        className={`flex items-center rounded-xl bg-background p-2 transition-all ease-in-out hover:bg-background/50 active:scale-95 ${showPanel ? "shadow-inner shadow-foreground/20" : ""}`}
+        className={`flex min-w-[150px] items-center rounded-xl bg-background p-2 transition-all ease-in-out hover:bg-background/50 active:scale-95 ${showPanel ? "shadow-inner shadow-foreground/20" : ""}`}
       >
         <img
           className="h-10 w-10 rounded-full"

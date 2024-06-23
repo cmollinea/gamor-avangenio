@@ -14,8 +14,6 @@ import { supabase } from "../lib/utils";
 export const Route = createFileRoute("/_auth")({
   component: () => <SearchLayout />,
   loader: async ({ context }) => {
-    console.log(context.authContext.user);
-
     if (!context.authContext?.session) {
       const setSession = context.authContext?.setSession as React.Dispatch<
         React.SetStateAction<Session | null>

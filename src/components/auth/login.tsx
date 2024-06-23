@@ -12,7 +12,7 @@ import {
 export const Login = () => {
   const { handleSubmit, isPending } = useSignIn();
   return (
-    <div className="flex h-screen place-content-center items-center">
+    <section className="flex h-screen place-content-center items-center">
       <Card>
         <CardHeader className="flex-col space-y-2">
           <Link className="text-3xl font-bold text-primary" to="/">
@@ -74,18 +74,17 @@ export const Login = () => {
           </form>
         </CardContent>
         <CardFooter className="items-center">
-          <p className="w-fit text-sm">
+          <p className="text-center text-sm font-light text-foreground/50">
             Do not have an account?{" "}
             <Link
-              from="/sign-in"
               to="/sign-up"
-              className="text-primary underline"
+              className="font-medium text-foreground/80 hover:underline"
             >
-              Create one
+              Create One
             </Link>
           </p>
         </CardFooter>
       </Card>
-    </div>
+    </section>
   );
 };

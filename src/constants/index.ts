@@ -73,3 +73,5 @@ export const tags = [
   "Superhero",
   "Permadeath",
 ];
+
+export const diceBearApiUrl = "https://api.dicebear.com/9.x/fun-emoji/svg";

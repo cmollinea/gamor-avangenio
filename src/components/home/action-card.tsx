@@ -45,8 +45,14 @@ export const ActionCard = () => {
                   </div>
                   <div className="flex w-full items-center justify-between">
                     <div className="flex -space-x-4">
-                      <div className="h-10 w-10 rounded-full bg-gray-100"></div>
-                      <div className="h-10 w-10 rounded-full bg-gray-100"></div>
+                      <img
+                        className="h-10 w-10 rounded-full"
+                        src={`https://api.dicebear.com/9.x/fun-emoji/svg?seed=${user.split(" ")[0]}`}
+                      />
+                      <img
+                        className="h-10 w-10 rounded-full"
+                        src={`https://api.dicebear.com/9.x/fun-emoji/svg?seed=${user.split(" ")[0]}2`}
+                      />
                     </div>
                     <button
                       disabled={alreadyAdded}

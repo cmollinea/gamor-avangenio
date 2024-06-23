@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { navigation } from "../../constants/index.ts";
 import { useThemeContext } from "../../hooks/use-theme-context.ts";
+import { Moon, Sun } from "../icons/index.tsx";
 
 export const Navbar = () => {
   const { theme, setTheme } = useThemeContext();
@@ -22,14 +23,14 @@ export const Navbar = () => {
         <nav className="flex w-full place-content-end items-center space-x-6 self-end">
           <button
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            className="h-10 w-10 rounded-xl bg-card-background active:scale-75"
+            className="rounded-xl bg-card-background p-2 active:scale-75"
           >
-            +
+            {theme === "light" ? <Sun /> : <Moon />}
           </button>
           <Link
             key={navigation.auth[0].label}
             from="/"
-            to={navigation.auth[0].href}
+            to="/sign-in"
             className="hover:text-primary/60 max-lg:hidden [&.active]:text-primary"
           >
             {navigation.auth[0].label}
@@ -37,7 +38,8 @@ export const Navbar = () => {
 
           <Link
             key={navigation.auth[1].label}
-            to={navigation.auth[1].href}
+            from="/"
+            to="/sign-up"
             className="rounded-full bg-button-primary p-3 text-button-primary-foreground max-lg:hidden"
           >
             {navigation.auth[1].label}

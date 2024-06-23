@@ -15,11 +15,7 @@ export const Login = () => {
     <div className="flex h-screen place-content-center items-center">
       <Card>
         <CardHeader className="flex-col space-y-2">
-          <Link
-            className="text-3xl font-bold text-primary"
-            from="/sign-in"
-            to="/"
-          >
+          <Link className="text-3xl font-bold text-primary" to="/">
             Gamor
           </Link>
           <CardTitle className="text-base">

@@ -13,7 +13,7 @@ Gamor is a cutting-edge game streaming platform designed to provide seamless str
 
 ## Video Example
 
-<iframe width="400" height="300" src="/public/example.webm" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+[Gamor in Action!](/public/example.webm)
 
 ## Installation
 
@@ -31,15 +31,15 @@ Gamor is a cutting-edge game streaming platform designed to provide seamless str
     ```
 
 3. **Set up environment variables**:
-    Create a `.env` file in the root directory and add your Supabase credentials and other necessary configurations:
 
-    ```bash
-VITE_SUPABASE_URL= Your Supabase url;
-VITE_SUPABASE_ANON_KEY= Your Supabase annon key;
-VITE_RAPID_API_KEY= Your Rapid Api key;
-VITE_BASE_GAMES_URL=  <https://free-to-play-games-database.p.rapidapi.com/api/games>;
+To run this project, you will need to add the following environment variables to your `.env` file:
 
-   ```
+| Variable                | Description                                        |
+|-------------------------|----------------------------------------------------|
+| `VITE_SUPABASE_URL`     | The URL of your Supabase project.                  |
+| `VITE_SUPABASE_ANON_KEY`| The anonymous key for your Supabase project.       |
+| `VITE_RAPID_API_KEY`    | Your Rapid API key for accessing Rapid API services.|
+| `VITE_BASE_GAMES_URL`   | <https://free-to-play-games-database.p.rapidapi.com/api/games>|
 
 1. **Run the development server**:
 

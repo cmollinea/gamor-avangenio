@@ -13,6 +13,7 @@ export const SearchFilters = () => {
     formRef,
     selectRef,
   } = useFilters();
+
   return (
     <div className="max-w-sm space-y-4">
       <form

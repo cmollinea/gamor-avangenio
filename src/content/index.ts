@@ -1,7 +1,4 @@
 export const homeCta = {
-  heading:
-    "start <br/> <span class='primary-heading'>streaming</span> <br/> games <br/> differently",
-  text: "gamor now has <span class='doodle-text'><b>stream party</b></span> platform",
   buttonsLabels: {
     primary: "Create account",
     ghost: "Sign In",

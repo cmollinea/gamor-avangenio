@@ -4,6 +4,7 @@ import { useUserActions } from "../../hooks/use-user-actions";
 export const UserAction = () => {
   const { showPanel, handleLogOut, handlePanel, isPending, user } =
     useUserActions();
+
   return (
     <div className="relative place-self-end">
       <button

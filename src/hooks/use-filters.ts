@@ -15,6 +15,8 @@ type ErrorForm = {
  * - `currentTitle`: The current search title from the URL search parameters.
  * - `currentCategory`: The current category filter from the URL search parameters, defaults to "all".
  * - `resetFilters`: A function to reset all filters to their initial state and clear the URL search parameters.
+ * - `selectRef`: A reference to a select element to reset values on resetFilters().
+ * - `formRef`: A reference to a form element to reset values on resetFilters().
  */
 
 export const useFilters = () => {

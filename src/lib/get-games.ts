@@ -1,6 +1,5 @@
 import { Game } from "../types";
 
-// const apiKey = import.meta.env.VITE_MOBY_GAMES_API_KEY;
 const url = import.meta.env.VITE_BASE_GAMES_URL;
 const options = {
   method: "GET",

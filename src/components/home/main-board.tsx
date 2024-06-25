@@ -4,8 +4,9 @@ import { useUsersContext } from "../../hooks/use-users-context";
 import { User } from "../icons";
 import { RemoveUserBtn } from "./remove-user-btn";
 
+const date = new Date();
+
 export const MainBoard = () => {
-  const date = new Date();
   const { theme } = useThemeContext();
   const { users } = useUsersContext();
 
@@ -25,6 +26,7 @@ export const MainBoard = () => {
         </span>
       </div>
 
+      {/* Floating Images */}
       <div
         className="relative h-full w-full bg-top bg-no-repeat max-xl:h-[500px]"
         style={{
@@ -53,6 +55,8 @@ export const MainBoard = () => {
           />
         </div>
       </div>
+
+      {/* Users */}
       <div className="absolute bottom-6 flex w-full place-content-center space-x-2">
         {users.map((user) => (
           <RemoveUserBtn key={user} user={user} />

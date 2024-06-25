@@ -8,8 +8,6 @@ const mutate = () => {
   return supabase.auth.signOut();
 };
 
-//!Bug first navigation into dashboard inmediately after log out perform a bug due to cache
-
 /**
  * Hook that provides user-related actions such as logging out and toggling the panel.
  *
@@ -18,7 +16,7 @@ const mutate = () => {
  * - `handleLogOut`: A function that triggers the logout process when called.
  * - `handlePanel`: A function to toggle the visibility of the user panel.
  * - `isPending`: A boolean indicating if the logout operation is pending.
- * - `user`: The current authenticated user object, if available.
+ * - `user`: The current authenticated user object.
  */
 
 export const useUserActions = () => {
@@ -26,6 +24,7 @@ export const useUserActions = () => {
   const { user, setSession, setUser } = useAuth();
   const router = useRouter();
   const navigate = useNavigate();
+
   const mutation = useMutation({
     mutationFn: mutate,
     onSuccess: async (data) => {

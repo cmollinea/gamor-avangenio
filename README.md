@@ -1,30 +1,50 @@
-# React + TypeScript + Vite
+# Gamor - Revolutionizing Game Streaming
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Gamor is a cutting-edge game streaming platform designed to provide seamless streaming, interactive gameplay, and a vibrant community. This project leverages a modern tech stack to deliver an exceptional user experience.
 
-Currently, two official plugins are available:
+![Gamor Screenshot](/public/example.png)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **TanStack Router**: For type-safe routing, ensuring reliable and maintainable navigation within the app.
+- **Supabase**: Handles authentication, providing secure and efficient user management.
+- **React Query**: Manages server state, offering powerful data synchronization and caching capabilities.
 
-- Configure the top-level `parserOptions` property like this:
+## Video Example
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+<iframe width="400" height="300" src="/public/example.webm" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Installation
+
+1. **Clone the repository**:
+
+    ```bash
+    git clone https://github.com/your-username/gamor-avangenio.git
+    cd gamor-avangenio
+    ```
+
+2. **Install dependencies**:
+
+    ```bash
+    pnpm install
+    ```
+
+3. **Set up environment variables**:
+    Create a `.env` file in the root directory and add your Supabase credentials and other necessary configurations:
+
+    ```bash
+VITE_SUPABASE_URL= Your Supabase url;
+VITE_SUPABASE_ANON_KEY= Your Supabase annon key;
+VITE_RAPID_API_KEY= Your Rapid Api key;
+VITE_BASE_GAMES_URL=  <https://free-to-play-games-database.p.rapidapi.com/api/games>;
+
+   ```
+
+1. **Run the development server**:
+
+    ```bash
+    pnpm dev
+    ```
+
+---

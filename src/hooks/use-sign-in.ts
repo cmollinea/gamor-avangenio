@@ -14,6 +14,14 @@ async function mutate({ email, password }: UserData) {
   });
 }
 
+/**
+ * Hook for managing sign-in functionality using Supabase authentication.
+ *
+ * @returns An object containing:
+ * - `handleSubmit`: A function to handle the sign-in process. Prevents default form submission, collects form data, and attempts to sign in the user.
+ * - `isPending`: A boolean indicating if the sign-in operation is still pending.
+ */
+
 export const useSignIn = () => {
   const navigate = useNavigate();
 

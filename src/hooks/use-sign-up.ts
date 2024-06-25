@@ -41,8 +41,17 @@ const mutate = ({ email, password }: NewUerInfo) => {
   return supabase.auth.signUp({ email: email, password: password });
 };
 
-//--> Dummy Validation
+/**
+ * Hook for managing sign-up functionality using Supabase authentication.
+ *
+ * @returns An object containing:
+ * - `handleSignUp`: A function to handle the sign-up process. Prevents default form submission, validates input, and attempts to sign up the user.
+ * - `errors`: An array of error objects, each containing a `message` and `target` field, representing validation errors found during the sign-up process.
+ * - `errorIndexes`: An object mapping error targets (`email`, `password`, `confirmPassword`, `terms`) to their indexes in the `errors` array, allowing for dynamic error display based on user input.
+ * - `removeErrorFromInput`: A function that removes an error from the `errors` array based on its index, effectively clearing the corresponding input field once the error is resolved.
+ */
 
+//--> Dummy Validation
 export const useSignUp = () => {
   const [errors, setErrors] = useState<SignUpError[] | null>(null);
   const navigate = useNavigate();

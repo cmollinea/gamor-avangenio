@@ -10,6 +10,17 @@ const mutate = () => {
 
 //!Bug first navigation into dashboard inmediately after log out perform a bug due to cache
 
+/**
+ * Hook that provides user-related actions such as logging out and toggling the panel.
+ *
+ * @returns An object containing:
+ * - `showPanel`: A boolean indicating whether the user panel should be shown or hidden.
+ * - `handleLogOut`: A function that triggers the logout process when called.
+ * - `handlePanel`: A function to toggle the visibility of the user panel.
+ * - `isPending`: A boolean indicating if the logout operation is pending.
+ * - `user`: The current authenticated user object, if available.
+ */
+
 export const useUserActions = () => {
   const [showPanel, setShowPanel] = useState(false);
   const { user, setSession, setUser } = useAuth();

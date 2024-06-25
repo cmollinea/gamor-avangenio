@@ -5,6 +5,18 @@ type ErrorForm = {
   message: string;
 };
 
+/**
+ * Hook for managing filter states and handling filter-related actions such as searching and resetting filters.
+ *
+ * @returns An object containing:
+ * - `handleSearch`: A function to handle search submissions. Validates input and updates the URL search parameters accordingly.
+ * - `handleCategoryChange`: A function to update the category filter based on user selection and reflect this change in the URL.
+ * - `error`: An object containing error messages related to form validation, if any.
+ * - `currentTitle`: The current search title from the URL search parameters.
+ * - `currentCategory`: The current category filter from the URL search parameters, defaults to "all".
+ * - `resetFilters`: A function to reset all filters to their initial state and clear the URL search parameters.
+ */
+
 export const useFilters = () => {
   const [error, setError] = useState<ErrorForm | null>(null);
   const location = useLocation();

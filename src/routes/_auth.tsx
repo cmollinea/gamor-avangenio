@@ -29,6 +29,7 @@ export const Route = createFileRoute("/_auth")({
     }
   },
   errorComponent: (err) => <p>{err.error.message}</p>,
+  gcTime: 0,
 });
 
 function SearchLayout() {

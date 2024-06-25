@@ -1,4 +1,3 @@
-import { Session, User } from "@supabase/supabase-js";
 import {
   Link,
   Outlet,
@@ -15,18 +14,13 @@ export const Route = createFileRoute("/_auth")({
   component: () => <SearchLayout />,
   loader: async ({ context }) => {
     if (!context.authContext?.session) {
-      const setSession = context.authContext?.setSession as React.Dispatch<
-        React.SetStateAction<Session | null>
-      >;
-      const setUser = context.authContext?.setUser as React.Dispatch<
-        React.SetStateAction<User | null>
-      >;
-
+      const setSession = context.authContext?.setSession;
+      const setUser = context.authContext?.setUser;
       const { data, error } = await supabase.auth.getSession();
 
       if (!data.session || error) {
         throw redirect({
-          to: "/",
+          to: "/sign-in",
         });
       }
 

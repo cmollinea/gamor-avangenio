@@ -1,31 +1,37 @@
-import { useEffect, useRef, useState } from "react";
-import { ThemeContext } from ".";
+import { useEffect, useState } from "react";
+import { Theme, ThemeContext } from ".";
 
 export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
-  const firstRender = useRef(true);
-  const html = document.getElementsByTagName("html");
-
-  const currentTheme =
-    html && html[0].classList.contains("dark") ? "dark" : "light";
-
-  const [theme, setTheme] = useState<"light" | "dark">(currentTheme);
+  const [theme, setTheme] = useState<Theme>(
+    () => (localStorage.getItem("theme") as Theme) || "system",
+  );
 
   useEffect(() => {
-    if (firstRender.current) {
-      firstRender.current = false;
+    const document = window.document.documentElement;
+    document.classList.remove("light", "dark");
+
+    if (theme === "system") {
+      const systemTheme = window.matchMedia("(prefers-color-scheme: dark)")
+        .matches
+        ? "dark"
+        : "light";
+
+      document.classList.add(systemTheme);
       return;
     }
 
-    if (currentTheme === "light") {
-      html[0].classList.add("dark");
-    } else {
-      html[0].classList.remove("dark");
-    }
-  }, [theme, currentTheme, html]);
+    document.classList.add(theme);
+  }, [theme]);
+
+  const value = {
+    theme,
+    setTheme: (theme: Theme) => {
+      localStorage.setItem("theme", theme);
+      setTheme(theme);
+    },
+  };
 
   return (
-    <ThemeContext.Provider value={{ theme, setTheme }}>
-      {children}
-    </ThemeContext.Provider>
+    <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
   );
 };

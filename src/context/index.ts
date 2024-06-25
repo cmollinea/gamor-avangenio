@@ -1,10 +1,12 @@
 import { Session, User } from "@supabase/supabase-js";
 import { createContext } from "react";
 
+export type Theme = "light" | "dark" | "system";
+
 type ThemeContext = {
-  theme: "light" | "dark";
-  setTheme: React.Dispatch<React.SetStateAction<"light" | "dark">>;
-} | null;
+  theme: Theme;
+  setTheme: (theme: Theme) => void;
+};
 
 type UsersContext = {
   users: string[];
@@ -19,6 +21,18 @@ export interface AuthContext {
   setSession: React.Dispatch<React.SetStateAction<Session | null>>;
 }
 
-export const ThemeContext = createContext<ThemeContext>(null);
+export interface MobileNavigationContext {
+  openNav: boolean;
+  handleOpenNav: () => void;
+  handleCloseNav: () => void;
+  navRef: React.MutableRefObject<HTMLDivElement | null>;
+}
+
+export const ThemeContext = createContext<ThemeContext>({
+  theme: "system",
+  setTheme: () => null,
+});
 export const UsersContext = createContext<UsersContext>(null);
 export const AuthContext = createContext<AuthContext | null>(null);
+export const MobileNavigationContext =
+  createContext<MobileNavigationContext | null>(null);

@@ -16,6 +16,9 @@ export const Route = createFileRoute("/_auth/search")({
   loaderDeps: ({ search: { title, category } }) => ({ title, category }),
 
   loader: async ({ context, deps: { title, category } }) => {
+    // if (!context.authContext.session) {
+    //   throw redirect({ to: "/sign-in" });
+    // }
     const gameQueryOptions = generateQueryOption(title, category);
     return context.queryClient.ensureQueryData(gameQueryOptions);
   },
@@ -23,7 +26,7 @@ export const Route = createFileRoute("/_auth/search")({
   errorComponent: (error) => <p>{error.error.message}</p>,
 
   pendingComponent: () => (
-    <div className="flex h-[calc(100vh-200px)] place-content-center items-center">
+    <div className="flex place-content-center items-center md:h-[calc(100vh-200px)]">
       <Spinner />
     </div>
   ),
@@ -38,11 +41,11 @@ export function Games() {
 
   const gamesQueryOptions = generateQueryOption(title, category);
 
-  const { data } = useSuspenseQuery({ ...gamesQueryOptions });
+  const { data, error } = useSuspenseQuery({ ...gamesQueryOptions });
 
   return (
     <>
-      {!("error" in data) && (
+      {data.length > 0 ? (
         <>
           <h2 className="text-2xl font-medium">
             Showing {data.length} results for you
@@ -53,7 +56,16 @@ export function Games() {
             ))}
           </div>
         </>
+      ) : (
+        <div>
+          <p>
+            There is no game found for your query, please try with another
+            filters
+          </p>
+        </div>
       )}
+
+      {error && <p>{error.message}</p>}
     </>
   );
 }

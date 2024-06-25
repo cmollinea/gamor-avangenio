@@ -1,6 +1,7 @@
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 import { z } from "zod";
+import { Empty, SadFace } from "../components/icons";
 import { GameCard } from "../components/search/game-card";
 import { Spinner } from "../components/ui/spinner";
 import { generateQueryOption } from "../lib/utils";
@@ -16,14 +17,18 @@ export const Route = createFileRoute("/_auth/search")({
   loaderDeps: ({ search: { title, category } }) => ({ title, category }),
 
   loader: async ({ context, deps: { title, category } }) => {
-    // if (!context.authContext.session) {
-    //   throw redirect({ to: "/sign-in" });
-    // }
     const gameQueryOptions = generateQueryOption(title, category);
     return context.queryClient.ensureQueryData(gameQueryOptions);
   },
 
-  errorComponent: (error) => <p>{error.error.message}</p>,
+  errorComponent: (error) => (
+    <div className="flex flex-col items-center space-y-6 p-2 text-center text-red-500">
+      <SadFace />{" "}
+      <p>
+        {error.error.message} <br /> Maybe you just need a VPN :/
+      </p>
+    </div>
+  ),
 
   pendingComponent: () => (
     <div className="flex place-content-center items-center md:h-[calc(100vh-200px)]">
@@ -57,10 +62,11 @@ export function Games() {
           </div>
         </>
       ) : (
-        <div>
-          <p>
-            There is no game found for your query, please try with another
-            filters
+        <div className="flex flex-col items-center space-y-6 p-2">
+          <Empty />
+          <p className="text-center">
+            No games found for your query. Please try adjusting your filters and
+            search again.
           </p>
         </div>
       )}

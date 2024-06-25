@@ -35,9 +35,9 @@ export const actionCard = {
 export const categoriesContent = [
   { category: "Action", thumbnail: "/categories/action.jpeg" },
   { category: "Sports", thumbnail: "/categories/sports.jpeg" },
-  { category: "MMORPG", thumbnail: "/categories/adventure.jpg" },
-  { category: "Racing", thumbnail: "/categories/arcade.jpeg" },
-  { category: "Moba", thumbnail: "/categories/fantasy.jpeg" },
+  { category: "MMORPG", thumbnail: "/categories/mmorpg.jpeg" },
+  { category: "Racing", thumbnail: "/categories/racing.jpeg" },
+  { category: "Moba", thumbnail: "/categories/moba.jpeg" },
   { category: "Strategy", thumbnail: "/categories/strategy.jpeg" },
   { category: "Shooter", thumbnail: "/categories/shooter.jpeg" },
   { category: "All", thumbnail: "/categories/all.jpeg" },

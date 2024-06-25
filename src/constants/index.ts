@@ -24,7 +24,7 @@ export const navigation = {
     },
     {
       label: "Create an Account",
-      href: "create-an-account",
+      href: "/sign-up",
     },
   ],
 };

@@ -3,42 +3,40 @@
 @tailwind utilities;
 
 @layer base {
-    :root {
-        --background: 0 7% 90%;
-        --foreground: 240 1% 20%;
+  :root {
+    --background: 0 7% 90%;
+    --foreground: 240 1% 20%;
 
-        --card-background: 0 7% 92%;
-        --card-foreground: 240 1% 20%;
+    --card-background: 0 7% 92%;
+    --card-foreground: 240 1% 20%;
 
-        --primary: 28 100% 56%;
-        --primary-foreground: 55 30% 7%;
+    --primary: 28 100% 56%;
+    --primary-foreground: 55 30% 7%;
 
-        --button-primary: 227 47% 4%;
-        --button-primary-foreground: 0 0% 91%;
+    --button-primary: 227 47% 4%;
+    --button-primary-foreground: 0 0% 91%;
 
-        --button-secondary: 0 12% 97%;
-        --button-secondary-foreground: 222 47% 11%;
+    --button-secondary: 0 12% 97%;
+    --button-secondary-foreground: 222 47% 11%;
 
-        --secondary: 269 54% 41%;
-        --secondary-foreground: 240 2% 89%;
+    --secondary: 269 54% 41%;
+    --secondary-foreground: 240 2% 89%;
 
-    }
+  }
 
-    body {
-        @apply bg-background text-foreground transition-colors ease-in-out;
-    }
+  body {
+    @apply bg-background text-foreground transition-colors ease-in-out;
+  }
 
-    h1 {
-        @apply text-5xl
-    }
+  h1 {
+    @apply text-5xl
+  }
 
-    h3 {
-        @apply text-3xl
-    }
+  h3 {
+    @apply text-3xl
+  }
 
-}
-
-.dark {
+  .dark {
     --background: 240 4% 10%;
     --foreground: 0 0% 100%;
 
@@ -56,83 +54,130 @@
 
     --secondary: 28 100% 56%;
     --secondary-foreground: 55 30% 7%;
+  }
 }
 
+
+
 .primary-heading {
-    @apply text-primary
+  @apply text-primary
+}
+
+.doodle-text {
+  background-image: url('/doodles/underline-doodle.svg');
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: 0 bottom;
+  background-position-y: 20px;
+  padding-bottom: 15px;
+}
+
+.dark .doodle-text {
+  background-image: url('/doodles/underline-doodle-dark.svg');
+
 }
 
 
 @keyframes cool-in {
-    50% {
-        scale: 0.8;
-        opacity: 0;
-    }
+  50% {
+    scale: 0.9;
+    opacity: 0;
+  }
 
-    100% {
-        scale: 1;
-        opacity: 1;
-    }
+  100% {
+    scale: 1;
+    opacity: 1;
+  }
 }
 
-@keyframes cool-out {
-    100% {
-        scale: 0;
-        opacity: 0;
-    }
+@keyframes fade-in {
+  100% {
+
+    opacity: 1;
+  }
+}
+
+@keyframes fade-out {
+  100% {
+    opacity: 0;
+  }
 }
 
 .cool-element {
-    animation: cool-in 0.15s ease-in-out forwards;
+  animation: cool-in 0.15s ease-in-out forwards;
 }
 
-.bye-cool-element {
-    animation: cool-out 0.15s ease-in-out forwards;
+.fade-in-element {
+  animation: fade-in 0.3s ease-in-out forwards;
+}
 
+.fade-out-element {
+  animation: fade-out 0.3s ease-in-out forwards;
 }
 
 .loader {
-    width: 48px;
-    height: 48px;
-    border: 3px dotted;
-    border-style: solid solid dotted dotted;
-    border-radius: 50%;
-    display: inline-block;
-    position: relative;
-    box-sizing: border-box;
-    animation: rotation 2s linear infinite;
+  width: 48px;
+  height: 48px;
+  border: 3px dotted;
+  border-style: solid solid dotted dotted;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  box-sizing: border-box;
+  animation: rotation 2s linear infinite;
+}
+
+.loader::after {
+  content: '';
+  box-sizing: border-box;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  border: 3px dotted;
+  border-style: solid solid dotted;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  animation: rotationBack 1s linear infinite;
+  transform-origin: center center;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
   }
-  .loader::after {
-    content: '';  
-    box-sizing: border-box;
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    margin: auto;
-    border: 3px dotted;
-    border-style: solid solid dotted;
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    animation: rotationBack 1s linear infinite;
-    transform-origin: center center;
+
+  100% {
+    transform: rotate(360deg);
   }
-      
-  @keyframes rotation {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
-  } 
-  @keyframes rotationBack {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(-360deg);
-    }
-  } 
+}
+
+@keyframes rotationBack {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+
+
+@media (min-width: 1024px) {
+   .doodle-div {
+    background-image:
+      url('/doodles/back-doodle.svg'), url('/doodles/back-doodle.svg'), url('/doodles/back-doodle.svg');
+    background-position:
+      20px calc(35% - 20px), 20px calc(45% - 20px), 20px calc(55% - 20px);
+    background-repeat: no-repeat;
+    background-size: 60%;
+  }
+
+  .dark .doodle-div {
+    background-image:
+    url('/doodles/back-doodle-dark.svg'), url('/doodles/back-doodle-dark.svg'), url('/doodles/back-doodle-dark.svg');
+  }
+}

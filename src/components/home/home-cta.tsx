@@ -2,7 +2,7 @@ import { homeCta as content } from "../../content";
 
 export const HomeCta = () => {
   return (
-    <div className="flex w-full flex-col space-y-8 px-10 pb-10 pt-40">
+    <div className="doodle-div flex w-full flex-col space-y-8 px-10 pb-10 pt-40">
       <h1
         className="text-6xl font-medium leading-[4rem]"
         dangerouslySetInnerHTML={{ __html: content.heading }}

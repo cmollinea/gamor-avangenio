@@ -91,9 +91,7 @@ export const useSignUp = () => {
 
   const removeErrorFromInput = (errorIndex: number) => {
     if (errorIndex >= 0) {
-      const filteredErrors = errors?.filter(
-        (err, index) => index !== errorIndex,
-      );
+      const filteredErrors = errors?.filter((_, index) => index !== errorIndex);
       setErrors(filteredErrors as SignUpError[]);
     }
   };

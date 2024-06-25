@@ -24,7 +24,6 @@ export const useUserActions = () => {
         await router.invalidate();
         navigate({
           to: "/",
-          from: "/search",
         });
       }
     },

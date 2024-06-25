@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { categoriesContent } from "../../content";
+import { Arrow } from "../icons";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 
 export const TrendingCategories = () => {
@@ -10,12 +11,13 @@ export const TrendingCategories = () => {
       <div className="grid w-full grid-cols-1 place-items-center justify-center gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {categoriesContent.map((item, index) => (
           <Link
+            aria-label={`dicover ${item.category} games`}
             resetScroll={false}
             key={item.category}
             className="group relative w-full max-w-lg overflow-hidden rounded-xl shadow-md xl:max-w-[365px]"
             from="/"
             to="/search"
-            search={{ genre: item.category.toLowerCase() }}
+            search={{ category: item.category.toLowerCase() }}
           >
             <Card className="">
               <div
@@ -33,6 +35,9 @@ export const TrendingCategories = () => {
                 {item.category}
               </CardContent>
             </Card>
+            <span className="absolute bottom-4 right-8 z-20 opacity-0 transition-all ease-in-out group-hover:right-4 group-hover:opacity-100">
+              <Arrow />
+            </span>
           </Link>
         ))}
       </div>

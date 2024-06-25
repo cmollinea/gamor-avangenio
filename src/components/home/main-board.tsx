@@ -1,6 +1,7 @@
 import { mainBoard as content } from "../../content";
 import { useThemeContext } from "../../hooks/use-theme-context";
 import { useUsersContext } from "../../hooks/use-users-context";
+import { User } from "../icons";
 import { RemoveUserBtn } from "./remove-user-btn";
 
 export const MainBoard = () => {
@@ -11,7 +12,7 @@ export const MainBoard = () => {
   return (
     <div className="relative flex flex-col items-center bg-secondary pt-10 lg:order-3 lg:col-span-2 xl:col-span-1">
       <div className="space-y-2 text-center">
-        <h3 className="font-bold">{content.heading}</h3>
+        <h3 className="font-bold text-white">{content.heading}</h3>
         <p className="font-semibold text-black/50">{content.text}</p>
       </div>
 
@@ -19,7 +20,9 @@ export const MainBoard = () => {
         <span>{date.getHours()}</span>
         <span>:</span>
         <span>{date.getMinutes()}</span>
-        <span className="absolute -left-10 -top-6 h-14 w-14 rounded-full bg-white/20 backdrop-blur-sm" />
+        <span className="absolute -left-10 -top-6 flex h-14 w-14 items-center justify-center rounded-full bg-white/20 text-white backdrop-blur-sm">
+          <User />
+        </span>
       </div>
 
       <div

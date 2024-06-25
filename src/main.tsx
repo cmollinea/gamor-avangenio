@@ -5,6 +5,7 @@ import "./index.css";
 // Import the generated route tree
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { AuthProvider } from "./context/auth-context";
+import { MobileNavContextProvider } from "./context/mobile-nav-context";
 import { ThemeProvider } from "./context/theme-context";
 import { useAuth } from "./hooks/use-auth-context";
 import { routeTree } from "./routeTree.gen";
@@ -45,7 +46,9 @@ if (!rootElement.innerHTML) {
   const root = ReactDOM.createRoot(rootElement);
   root.render(
     <ThemeProvider>
-      <App />
+      <MobileNavContextProvider>
+        <App />
+      </MobileNavContextProvider>
     </ThemeProvider>,
   );
 }

@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { actionCard as content } from "../../content";
 import { useUsersContext } from "../../hooks/use-users-context";
+import { Add, Done, Settings } from "../icons";
 import {
   Card,
   CardContent,
@@ -26,11 +27,12 @@ export const ActionCard = () => {
           <span className="text-4xl text-foreground/50">02. </span>
           {content.secondStep.heading}
         </h3>
-        <Card className="relative bg-background">
-          <span className="absolute bottom-0 h-40 w-full bg-gradient-to-t from-background to-background/5 backdrop-blur-[1px]" />
-          <CardHeader className="justify-between border-b border-foreground/10 px-4">
+        <Card className="bg-background">
+          <CardHeader className="items-center justify-between border-b border-foreground/10 px-4">
             <CardTitle>{content.secondStep.cardTitle}</CardTitle>
-            <div className="h-10 w-10 rounded-xl bg-gray-500" />
+            <span className="rounded-xl">
+              <Settings />
+            </span>
           </CardHeader>
           <CardContent className="space-y-2">
             {content.secondStep.users.map((user, index) => {
@@ -38,7 +40,7 @@ export const ActionCard = () => {
               return (
                 <div key={user} className="flex justify-between">
                   <div className="flex w-full items-center space-x-2 py-2 font-bold">
-                    <div className="flex h-6 w-6 place-content-center items-center rounded-full bg-gray-950">
+                    <div className="flex h-6 w-6 place-content-center items-center rounded-full bg-button-primary/5 text-black dark:text-white">
                       {index + 1}
                     </div>
                     <span>{user}</span>
@@ -57,11 +59,11 @@ export const ActionCard = () => {
                     <button
                       disabled={alreadyAdded}
                       onClick={() => addUser(user)}
-                      className="h-8 w-8 rounded-xl bg-gray-300 text-black"
+                      className="flex h-8 w-8 items-center justify-center rounded-xl bg-button-primary/5 text-black shadow-sm transition-transform ease-in-out active:scale-95 dark:text-white"
                       aria-label={`Add ${useUsersContext} to main panel`}
                       aria-disabled={alreadyAdded}
                     >
-                      {alreadyAdded ? "✅" : "+"}
+                      {alreadyAdded ? <Done /> : <Add />}
                     </button>
                   </div>
                 </div>
@@ -71,7 +73,7 @@ export const ActionCard = () => {
           <CardFooter className="relative z-10">
             <Link
               to={"/search"}
-              className="rounded-xl bg-button-primary py-4 text-center text-xl text-button-primary-foreground"
+              className="rounded-xl bg-button-primary py-4 text-center text-xl font-bold text-button-primary-foreground"
             >
               {content.secondStep.buttonLabel}
             </Link>

@@ -1,5 +1,6 @@
 import { QueryClient } from "@tanstack/react-query";
 import { Outlet, createRootRouteWithContext } from "@tanstack/react-router";
+import { NotFound } from "../components/ui/not-found";
 import { useAuth } from "../hooks/use-auth-context";
 
 interface RouteWithContext {
@@ -13,4 +14,5 @@ export const Route = createRootRouteWithContext<RouteWithContext>()({
       <Outlet />
     </>
   ),
+  notFoundComponent: NotFound,
 });

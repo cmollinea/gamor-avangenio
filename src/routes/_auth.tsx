@@ -30,7 +30,7 @@ export const Route = createFileRoute("/_auth")({
 function SearchLayout() {
   const isDesktop = useMediaQuery("(min-width: 768px)");
 
-  //-->Avoid a flicker due the fact of use javascript to control when to display an element
+  //-->Avoid a flicker due to using JavaScript to control when an element is displayed.
   const [isFirstRender, setIsFirstRender] = useState(true);
 
   useEffect(() => {

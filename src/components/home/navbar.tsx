@@ -1,11 +1,14 @@
 import { Link } from "@tanstack/react-router";
 import { navigation } from "../../constants/index.ts";
+import { useAuth } from "../../hooks/use-auth-context.ts";
 import { useThemeContext } from "../../hooks/use-theme-context.ts";
 import { MenuButton } from "./sm-navigation.tsx";
 import { ThemeToggle } from "./theme-toggle.tsx";
 
 export const Navbar = () => {
   const { theme } = useThemeContext();
+  const { session } = useAuth();
+
   return (
     <header className="sticky top-0 z-50 flex place-content-center bg-background/80 py-4 text-lg font-medium backdrop-blur-lg transition-colors ease-in-out">
       <div className="container flex items-center justify-between px-10 lg:px-4">
@@ -40,23 +43,35 @@ export const Navbar = () => {
             <MenuButton />
           </div>
           <nav className="flex place-content-end items-center space-x-6 self-end max-lg:hidden">
-            <Link
-              key={navigation.auth[0].label}
-              from="/"
-              to="/sign-in"
-              className="hover:text-primary/60 [&.active]:text-primary"
-            >
-              {navigation.auth[0].label}
-            </Link>
-
-            <Link
-              key={navigation.auth[1].label}
-              from="/"
-              to="/sign-up"
-              className="rounded-full bg-button-primary p-3 text-button-primary-foreground"
-            >
-              {navigation.auth[1].label}
-            </Link>
+            {session ? (
+              <Link
+                from="/"
+                to="/search"
+                className="rounded-full bg-button-primary p-3 text-button-primary-foreground"
+              >
+                Dashboard
+              </Link>
+            ) : (
+              <>
+                {" "}
+                <Link
+                  key={navigation.auth[0].label}
+                  from="/"
+                  to="/sign-in"
+                  className="hover:text-primary/60 [&.active]:text-primary"
+                >
+                  {navigation.auth[0].label}
+                </Link>
+                <Link
+                  key={navigation.auth[1].label}
+                  from="/"
+                  to="/sign-up"
+                  className="rounded-full bg-button-primary p-3 text-button-primary-foreground"
+                >
+                  {navigation.auth[1].label}
+                </Link>
+              </>
+            )}
           </nav>
         </div>
       </div>

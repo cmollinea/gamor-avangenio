@@ -13,7 +13,13 @@ Gamor is a cutting-edge game streaming platform designed to provide seamless str
 
 ## Video Example
 
-[Gamor in Action!](/public/example.webm)
+[Gamor in Action!](https://gamor-avangenio.vercel.app/example.webm)
+
+## Features
+
+  - **DarkMode**
+  - **Authentication**
+  - **Game Search by title and category**
 
 ## Installation
 

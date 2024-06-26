@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { categoriesContent } from "../../content";
+import { categoriesContent } from "../../content/home-content";
 import { Arrow } from "../icons";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 

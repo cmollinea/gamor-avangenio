@@ -14,8 +14,6 @@ export const Route = createFileRoute("/_auth")({
   component: () => <SearchLayout />,
   loader: async ({ context }) => {
     if (!context.authContext?.session) {
-      const setSession = context.authContext?.setSession;
-      const setUser = context.authContext?.setUser;
       const { data, error } = await supabase.auth.getSession();
 
       if (!data.session || error) {
@@ -23,9 +21,6 @@ export const Route = createFileRoute("/_auth")({
           to: "/sign-in",
         });
       }
-
-      setSession(data.session);
-      setUser(data.session?.user);
     }
   },
   errorComponent: (err) => <p>{err.error.message}</p>,

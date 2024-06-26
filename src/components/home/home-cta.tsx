@@ -1,4 +1,4 @@
-import { homeCta as content } from "../../content";
+import { homeCta as content } from "../../content/home-content";
 
 export const HomeCta = () => {
   return (

@@ -1,14 +1,12 @@
-import { mainBoard as content } from "../../content";
+import { mainBoard as content } from "../../content/home-content";
 import { useThemeContext } from "../../hooks/use-theme-context";
-import { useUsersContext } from "../../hooks/use-users-context";
 import { User } from "../icons";
-import { RemoveUserBtn } from "./remove-user-btn";
+import { UsersOnBoard } from "./users-on-board";
 
 const date = new Date();
 
 export const MainBoard = () => {
   const { theme } = useThemeContext();
-  const { users } = useUsersContext();
 
   return (
     <div className="relative flex flex-col items-center bg-secondary pt-10 lg:order-3 lg:col-span-2 xl:col-span-1">
@@ -57,11 +55,7 @@ export const MainBoard = () => {
       </div>
 
       {/* Users */}
-      <div className="absolute bottom-6 flex w-full place-content-center space-x-2">
-        {users.map((user) => (
-          <RemoveUserBtn key={user} user={user} />
-        ))}
-      </div>
+      <UsersOnBoard />
     </div>
   );
 };

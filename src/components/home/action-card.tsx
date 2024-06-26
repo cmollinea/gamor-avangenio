@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { actionCard as content } from "../../content";
+import { actionCard as content } from "../../content/home-content";
 import { useUsersContext } from "../../hooks/use-users-context";
 import { Add, Done, Settings } from "../icons";
 import {

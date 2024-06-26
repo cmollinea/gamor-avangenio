@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { useSignUp } from "../../hooks/use-sign-up";
+import { Mail, Password } from "../icons";
 
 export const SignUpForm = () => {
   const { handleSignUp, removeErrorFromInput, errorIndexes, errors } =
@@ -17,7 +18,7 @@ export const SignUpForm = () => {
           Your email
           <sup className="font-bold text-primary">*</sup>
         </label>
-        <div>
+        <div className="relative">
           <input
             onFocus={() => removeErrorFromInput(emailIndex)}
             // Using input type = text in order to disable the html validation
@@ -26,13 +27,16 @@ export const SignUpForm = () => {
             id="email"
             inputMode="email"
             className={`w-full rounded-xl border border-foreground/20 bg-background p-2 pr-10 transition-colors ease-in-out focus:border-primary focus:outline-none ${emailIndex >= 0 ? "border-red-500" : ""}`}
-            placeholder="name@company.com"
+            placeholder="avangenio@company.com"
           />
           {emailIndex >= 0 && errors ? (
             <span className="text-xs text-red-500">
               {errors[emailIndex].message}
             </span>
           ) : null}
+          <span className="absolute bottom-0 right-4 top-0 flex place-content-center items-center text-foreground/50">
+            <Mail />
+          </span>
         </div>
       </div>
       <div>
@@ -43,7 +47,7 @@ export const SignUpForm = () => {
           Password
           <sup className="font-bold text-primary">*</sup>
         </label>
-        <div>
+        <div className="relative">
           <input
             onFocus={() => removeErrorFromInput(passwordIndex)}
             type="password"
@@ -57,6 +61,9 @@ export const SignUpForm = () => {
               {errors[passwordIndex].message}
             </span>
           ) : null}
+          <span className="absolute bottom-0 right-4 top-0 flex place-content-center items-center text-foreground/50">
+            <Password />
+          </span>
         </div>
       </div>
       <div>
@@ -67,7 +74,7 @@ export const SignUpForm = () => {
           Confirm password
           <sup className="font-bold text-primary">*</sup>
         </label>
-        <div>
+        <div className="relative">
           <input
             onFocus={() => removeErrorFromInput(confirmPasswordIndex)}
             type="password"
@@ -81,6 +88,9 @@ export const SignUpForm = () => {
               {errors[confirmPasswordIndex].message}
             </span>
           ) : null}
+          <span className="absolute bottom-0 right-4 top-0 flex place-content-center items-center text-foreground/50">
+            <Password />
+          </span>
         </div>
       </div>
       <div>

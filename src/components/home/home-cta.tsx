@@ -14,8 +14,8 @@ export const HomeCta = () => {
         </span>{" "}
         platform
       </p>
-      <div className="flex items-center space-x-4 pr-20">
-        <button className="rounded-full border border-gray-300/20 p-4 px-6 font-bold shadow-xl shadow-black/20 hover:bg-primary hover:text-primary-foreground">
+      <div className="flex items-center space-x-4 pr-20 max-[395px]:text-sm">
+        <button className="rounded-full border border-gray-300/20 px-6 py-4 font-bold shadow-xl shadow-black/20 hover:bg-primary hover:text-primary-foreground max-[395px]:px-3">
           {content.buttonsLabels.primary}
         </button>
         <button className="font-bold hover:text-primary">

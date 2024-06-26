@@ -22,9 +22,7 @@ export const Route = createFileRoute("/_auth/search")({
     return context.queryClient.ensureQueryData(gameQueryOptions);
   },
 
-  errorComponent: ({ error, reset }) => (
-    <ErrorComponent message={error.message} reset={reset} />
-  ),
+  errorComponent: ({ error }) => <ErrorComponent message={error.message} />,
 
   pendingComponent: () => <Spinner />,
 

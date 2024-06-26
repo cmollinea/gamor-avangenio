@@ -69,7 +69,7 @@ export const SearchFilters = () => {
               <option
                 key={genre}
                 className="cursor-pointer hover:bg-primary"
-                value={genre}
+                value={genre.toLocaleLowerCase()}
               >
                 {genre}
               </option>

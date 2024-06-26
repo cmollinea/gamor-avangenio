@@ -27,7 +27,7 @@ export const useFilters = () => {
   const selectRef = useRef<HTMLSelectElement | null>(null);
 
   const currentTitle = location.search.title;
-  const currentCategory = location.search.category ?? "all";
+  const currentCategory = location.search.category?.toLowerCase() ?? "all";
 
   const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

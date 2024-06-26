@@ -15,7 +15,7 @@ export const GameCard = ({ game }: Props) => {
   return (
     <Card
       title={`${game.title}\n\n${game.short_description}`}
-      className="group relative w-full max-w-[304px] cursor-pointer select-none border border-transparent pt-0 shadow-md transition-colors ease-in-out hover:border-primary"
+      className="group relative h-full w-full max-w-[304px] cursor-pointer select-none border border-transparent pt-0 shadow-md transition-colors ease-in-out hover:border-primary"
     >
       <CardHeader className="relative overflow-hidden p-0">
         <span className="absolute inset-0 z-10 bg-gradient-to-t from-primary/80 to-transparent" />

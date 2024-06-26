@@ -29,15 +29,15 @@ export const SignUpForm = () => {
             className={`w-full rounded-xl border border-foreground/20 bg-background p-2 pr-10 transition-colors ease-in-out focus:border-primary focus:outline-none ${emailIndex >= 0 ? "border-red-500" : ""}`}
             placeholder="avangenio@company.com"
           />
-          {emailIndex >= 0 && errors ? (
-            <span className="text-xs text-red-500">
-              {errors[emailIndex].message}
-            </span>
-          ) : null}
           <span className="absolute bottom-0 right-4 top-0 flex place-content-center items-center text-foreground/50">
             <Mail />
           </span>
         </div>
+        {emailIndex >= 0 && errors ? (
+          <span className="text-xs text-red-500">
+            {errors[emailIndex].message}
+          </span>
+        ) : null}
       </div>
       <div>
         <label
@@ -56,15 +56,15 @@ export const SignUpForm = () => {
             placeholder="A secure password"
             className={`w-full rounded-xl border border-foreground/20 bg-background p-2 pr-10 transition-colors ease-in-out focus:border-primary focus:outline-none ${passwordIndex >= 0 ? "border-red-500" : ""}`}
           />
-          {passwordIndex >= 0 && errors ? (
-            <span className="text-xs text-red-500">
-              {errors[passwordIndex].message}
-            </span>
-          ) : null}
           <span className="absolute bottom-0 right-4 top-0 flex place-content-center items-center text-foreground/50">
             <Password />
           </span>
         </div>
+        {passwordIndex >= 0 && errors ? (
+          <span className="text-xs text-red-500">
+            {errors[passwordIndex].message}
+          </span>
+        ) : null}
       </div>
       <div>
         <label
@@ -83,15 +83,15 @@ export const SignUpForm = () => {
             placeholder="Same as above"
             className={`w-full rounded-xl border border-foreground/20 bg-background p-2 pr-10 transition-colors ease-in-out focus:border-primary focus:outline-none ${confirmPasswordIndex >= 0 ? "border-red-500" : ""}`}
           />
-          {confirmPasswordIndex >= 0 && errors ? (
-            <span className="text-xs text-red-500">
-              {errors[confirmPasswordIndex].message}
-            </span>
-          ) : null}
           <span className="absolute bottom-0 right-4 top-0 flex place-content-center items-center text-foreground/50">
             <Password />
           </span>
         </div>
+        {confirmPasswordIndex >= 0 && errors ? (
+          <span className="text-xs text-red-500">
+            {errors[confirmPasswordIndex].message}
+          </span>
+        ) : null}
       </div>
       <div>
         <div className="flex items-center space-x-1 pl-2">

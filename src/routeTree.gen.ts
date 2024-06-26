@@ -25,9 +25,6 @@ const MainIndexLazyImport = createFileRoute('/_main/')()
 const MainStreamLazyImport = createFileRoute('/_main/stream')()
 const MainPartyLazyImport = createFileRoute('/_main/party')()
 const MainGetPremiumLazyImport = createFileRoute('/_main/get-premium')()
-const MainCreateAnAccountLazyImport = createFileRoute(
-  '/_main/create-an-account',
-)()
 
 // Create/Update Routes
 
@@ -71,13 +68,6 @@ const MainGetPremiumLazyRoute = MainGetPremiumLazyImport.update({
   getParentRoute: () => MainRoute,
 } as any).lazy(() =>
   import('./routes/_main.get-premium.lazy').then((d) => d.Route),
-)
-
-const MainCreateAnAccountLazyRoute = MainCreateAnAccountLazyImport.update({
-  path: '/create-an-account',
-  getParentRoute: () => MainRoute,
-} as any).lazy(() =>
-  import('./routes/_main.create-an-account.lazy').then((d) => d.Route),
 )
 
 const AuthSearchRoute = AuthSearchImport.update({
@@ -124,13 +114,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthSearchImport
       parentRoute: typeof AuthImport
     }
-    '/_main/create-an-account': {
-      id: '/_main/create-an-account'
-      path: '/create-an-account'
-      fullPath: '/create-an-account'
-      preLoaderRoute: typeof MainCreateAnAccountLazyImport
-      parentRoute: typeof MainImport
-    }
     '/_main/get-premium': {
       id: '/_main/get-premium'
       path: '/get-premium'
@@ -167,7 +150,6 @@ declare module '@tanstack/react-router' {
 export const routeTree = rootRoute.addChildren({
   AuthRoute: AuthRoute.addChildren({ AuthSearchRoute }),
   MainRoute: MainRoute.addChildren({
-    MainCreateAnAccountLazyRoute,
     MainGetPremiumLazyRoute,
     MainPartyLazyRoute,
     MainStreamLazyRoute,
@@ -200,7 +182,6 @@ export const routeTree = rootRoute.addChildren({
     "/_main": {
       "filePath": "_main.tsx",
       "children": [
-        "/_main/create-an-account",
         "/_main/get-premium",
         "/_main/party",
         "/_main/stream",
@@ -216,10 +197,6 @@ export const routeTree = rootRoute.addChildren({
     "/_auth/search": {
       "filePath": "_auth.search.tsx",
       "parent": "/_auth"
-    },
-    "/_main/create-an-account": {
-      "filePath": "_main.create-an-account.lazy.tsx",
-      "parent": "/_main"
     },
     "/_main/get-premium": {
       "filePath": "_main.get-premium.lazy.tsx",

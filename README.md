@@ -41,7 +41,7 @@ To run this project, you will need to add the following environment variables to
 | `VITE_RAPID_API_KEY`    | Your Rapid API key for accessing Rapid API services.|
 | `VITE_BASE_GAMES_URL`   | <https://free-to-play-games-database.p.rapidapi.com/api/games>|
 
-1. **Run the development server**:
+4. **Run the development server**:
 
     ```bash
     pnpm dev
